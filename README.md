@@ -62,7 +62,23 @@ jobs:
 runs-on: ubuntu-latest
 ```
 * **NOTE:** This will create a new ubuntu container for the code to be ran in. This container will checkout the code and build our project defined in the following steps.
-12. Define the steps that the job will perform:
+11. Define a `steps:` clause nested under the `build-gradle-project:` below `runs-on: ubuntu-latest`. Keep in mind proper indentation:
 ```
-
+steps:
 ```
+12. Define the steps that the job will perform. Each step is defined by a hyphen `-` with a `name:` label and a `uses:` clause that executes a predefined task. Your work flow will perform the following 3 tasks in order:
+  * Check out the project sources from this GitHub repo
+```
+- name: Checkout project
+  uses: actions/checkout@v3
+```
+  * Setup Gradle in the ubuntu container to prepare the execution of Gradle commands:
+```
+- name: Setup Gradle
+  uses: gradle/gradle-build-action@v2
+```
+  * Run the project build we created earlier using the Gradle Wrapper
+```
+- name: Run build with Gradle Wrapper
+  run: ./gradlew build
+```  
