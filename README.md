@@ -81,4 +81,6 @@ steps:
 ```
 - name: Run build with Gradle Wrapper
   run: ./gradlew build
-```  
+```
+13. Rename the work flow to `gradle_build.yml` and then commit your changes by selecting the green commit button in the top-right.
+14. When returing to the main repo page, refresh your web-browser and notice that there should be a yellow dot or green checkmark at the top of the file list next to the latest commit id. Return to the Actions tab and you should see that actions has ran the workflow you just added. If you see a red `x`, that means the build failed and you will need to verify that the syntax of your workflow is correct. 
